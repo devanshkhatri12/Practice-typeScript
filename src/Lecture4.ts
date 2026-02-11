@@ -1,5 +1,6 @@
 // type narrowing
 // it give suggestion based on type of datatype
+// type assertion 
 function chaitype(kind: string | number){
     if(typeof kind === "string"){
         return `Making ${kind} kind.`
@@ -72,4 +73,31 @@ function aboutUs(data: bioData | string){
         return `My name is ${data.name} and my age is ${data.age}`
     }
     return `about my self ${data}`
+}
+
+type MasalaChai = {type: "masala"; spicelevel: number} 
+type GingerChai = {type: "ginger"; ginger: number} 
+type AdhrakChai = {type: "adhrak"; adhrak: number} 
+
+type chai = MasalaChai | GingerChai | AdhrakChai
+
+function makeChai(order: chai){
+    switch(order.type)
+    {
+        case "masala": 
+        return `Masala chai serve...`
+        break;
+        case "ginger": 
+        return `Ginger chai serve...`
+        break;
+        case "adhrak": 
+        return `Adhrak chai serve...`
+        break;
+    }
+}
+
+function brew(order: MasalaChai | GingerChai){
+    if("spicelevel" in order){
+        return "Masala Chai is available"
+    }
 }
